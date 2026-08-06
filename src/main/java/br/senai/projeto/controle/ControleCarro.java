@@ -1,6 +1,7 @@
 package br.senai.projeto.controle;
 
 
+import br.senai.projeto.dto.CarroDTO;
 import br.senai.projeto.modelo.CarroFormula1;
 import br.senai.projeto.repositorio.CarroFormula1Repositorio;
 import jakarta.validation.Valid;
@@ -32,15 +33,21 @@ public class ControleCarro {
     }
 
     @PostMapping
-    public CarroFormula1 salvar(@Valid @RequestBody CarroFormula1 carro) {
+    public CarroFormula1 salvar(@RequestBody @Valid CarroDTO dto) {
+        CarroFormula1 carro = new CarroFormula1(dto);
         return repositorio.save(carro);
     }
 
     @PutMapping("/{id}")
-    public CarroFormula1 modificar(@PathVariable Long id, @Valid @RequestBody CarroFormula1 carro) {
+    public CarroFormula1 atualizar(@PathVariable Long id, @RequestBody @Valid CarroDTO dto) {
+        if (!repositorio.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Carro não encontrado");
+        }
+        CarroFormula1 carro = new CarroFormula1(dto);
         carro.setId(id);
         return repositorio.save(carro);
     }
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
