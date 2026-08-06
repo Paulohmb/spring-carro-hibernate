@@ -28,7 +28,7 @@ public class ControleCarro {
 
     @GetMapping("/{id}")
     public CarroFormula1 buscarPorId(@PathVariable Long id) {
-        return repositorio.findById(id).orElseThrow(() -> new ResponseStatusException( HttpStatus.NOT_FOUND, "Carro não encontrado com ID: " + id ));
+        return repositorio.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Carro não encontrado com ID: " + id));
     }
 
     @PostMapping
@@ -45,6 +45,9 @@ public class ControleCarro {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
+        if (!repositorio.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Carro não encontrado para exclusão");
+        }
         repositorio.deleteById(id);
     }
 }
