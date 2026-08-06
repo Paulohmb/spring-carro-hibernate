@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.Objects;
 
 
@@ -19,10 +21,10 @@ public class CarroFormula1 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotEmpty(message = "Equipe é obrigatória")
     private String equipe;
 
-
+    @NotEmpty(message = "Modelo é obrigatório")
     private String modelo;
 
 
