@@ -7,7 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -30,15 +33,15 @@ public class CarroFormula1 {
 
     private String motorizacao;
 
-
-    @Column(name = "ano_temporada", nullable = false)
+    @Min(value = 1950, message = "Ano deve ser maior que 1950")
+    @Column(name = "ano_temporada", nullable = false )
     private Integer anoTemporada;
 
-
+    @NotNull(message = "Número do piloto é obrigatório")
     @Column(name = "numero_piloto")
     private Integer numeroPiloto;
 
-
+    @NotBlank(message = "Piloto principal é obrigatório")
     @Column(name = "piloto_principal")
     private String pilotoPrincipal;
 
