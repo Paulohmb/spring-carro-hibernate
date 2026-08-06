@@ -1,6 +1,7 @@
 package br.senai.projeto.modelo;
 
 
+import br.senai.projeto.dto.CarroDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,17 +56,16 @@ public class CarroFormula1 {
 
 
     // Construtor completo
-    public CarroFormula1(Long id, String equipe, String modelo, String motorizacao,
-                         Integer anoTemporada, Integer numeroPiloto, String pilotoPrincipal, Boolean ativo) {
-        this.id = id;
-        this.equipe = equipe;
-        this.modelo = modelo;
-        this.motorizacao = motorizacao;
-        this.anoTemporada = anoTemporada;
-        this.numeroPiloto = numeroPiloto;
-        this.pilotoPrincipal = pilotoPrincipal;
-        this.ativo = ativo != null ? ativo : true;
+    // Construtor para converter DTO para Entidade
+    public CarroFormula1(CarroDTO dto){
+        this.equipe = dto.equipe();
+        this.modelo = dto.modelo();
+        this.motorizacao = dto.motorizacao();
+        this.anoTemporada = dto.anoTemporada();
+        this.numeroPiloto = dto.numeroPiloto();
+        this.pilotoPrincipal = dto.pilotoPrincipal();
     }
+
 
 
     // Getters e Setters
