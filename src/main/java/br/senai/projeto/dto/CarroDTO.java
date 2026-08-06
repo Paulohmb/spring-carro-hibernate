@@ -3,6 +3,7 @@ package br.senai.projeto.dto;
 import jakarta.validation.constraints.*;
 
 public record CarroDTO(
+        Long id,
         @NotEmpty(message = "Equipe é obrigatória") String equipe,
         @NotEmpty(message = "Modelo é obrigatório") String modelo,
         String motorizacao,

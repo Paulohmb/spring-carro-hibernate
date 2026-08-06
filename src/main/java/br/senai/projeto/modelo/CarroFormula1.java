@@ -38,11 +38,10 @@ public class CarroFormula1 {
     @Column(name = "ano_temporada", nullable = false )
     private Integer anoTemporada;
 
-    @NotNull(message = "Número do piloto é obrigatório")
+
     @Column(name = "numero_piloto")
     private Integer numeroPiloto;
 
-    @NotBlank(message = "Piloto principal é obrigatório")
     @Column(name = "piloto_principal")
     private String pilotoPrincipal;
 
