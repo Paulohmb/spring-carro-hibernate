@@ -7,7 +7,7 @@ public record CarroDTO(
         @NotEmpty(message = "Equipe é obrigatória") String equipe,
         @NotEmpty(message = "Modelo é obrigatório") String modelo,
         String motorizacao,
-        @Min(1950) Integer anoTemporada,
-        @NotNull Integer numeroPiloto,
-        @NotBlank String pilotoPrincipal
+        @Min(value = 1950, message = "Ano deve ser maior ou igual a 1950") Integer anoTemporada,
+        @NotNull(message = "Número do piloto é obrigatório") Integer numeroPiloto,
+        @NotBlank(message = "Piloto principal é obrigatório") String pilotoPrincipal
 ) {}
