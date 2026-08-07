@@ -1,77 +1,439 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de F1 - SENAI</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Racing Grid Manager - SENAI</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
+
         body {
-            background-color: #f8f9fa;
+            background-color: #f5f6f8;
         }
+
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #111318 !important;
+            border-bottom: 3px solid #dc3545;
+        }
+
+        .navbar-brand {
+            letter-spacing: 0.4px;
+        }
+
+
+        /* BANNER */
+
+        .hero {
+            min-height: 300px;
+
+            margin-bottom: 28px;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            background:
+                    linear-gradient(
+                            90deg,
+                            rgba(0, 0, 0, 0.90) 0%,
+                            rgba(0, 0, 0, 0.75) 38%,
+                            rgba(0, 0, 0, 0.28) 70%,
+                            rgba(0, 0, 0, 0.10) 100%
+                    ),
+                    url("https://images.unsplash.com/photo-1752886157329-03575ea8849f?auto=format&fit=crop&fm=jpg&q=85&w=1800");
+
+            background-size: cover;
+
+            background-position: center 55%;
+
+            box-shadow:
+                    0 8px 25px
+                    rgba(0, 0, 0, 0.15);
+        }
+
+
+        .hero-content {
+            color: white;
+
+            padding: 40px;
+
+            max-width: 600px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .hero-badge {
+            display: inline-block;
+
+            background: #dc3545;
+
+            color: white;
+
+            padding: 6px 14px;
+
+            border-radius: 50px;
+
+            font-size: 0.75rem;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero h1 {
+            font-size: 2.7rem;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero h1 span {
+            color: #ff3b45;
+        }
+
+
+        .hero p {
+            max-width: 490px;
+
+            color: #e7e7e7;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero-info {
+            display: flex;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            font-size: 0.9rem;
+        }
+
+
+        .hero-info i {
+            color: #ff3b45;
+        }
+
+
+        /* CARDS */
 
         .card-custom {
             border-radius: 12px;
+
             border: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+            box-shadow:
+                    0 4px 15px
+                    rgba(0, 0, 0, 0.07);
         }
+
+
+        .card-title {
+            font-weight: 700;
+        }
+
+
+        /* FORMULÁRIO */
+
+        .form-control {
+            border-radius: 8px;
+
+            padding: 10px 12px;
+        }
+
+
+        .form-control:focus {
+            border-color: #dc3545;
+
+            box-shadow:
+                    0 0 0 0.2rem
+                    rgba(220, 53, 69, 0.12);
+        }
+
+
+        #btnSubmit {
+            border-radius: 8px;
+
+            padding: 10px;
+        }
+
+
+        /* TABELA */
 
         .table-responsive {
             border-radius: 8px;
+
             overflow: hidden;
         }
 
+
+        .table {
+            margin-bottom: 0;
+        }
+
+
+        .table thead th {
+            font-size: 0.8rem;
+
+            text-transform: uppercase;
+
+            color: #555;
+        }
+
+
+        .table tbody tr {
+            transition: 0.15s;
+        }
+
+
+        .table tbody tr:hover {
+            background-color: #fff5f5;
+        }
+
+
         .badge-numero {
             font-size: 0.9em;
+
             font-weight: 700;
-            width: 35px;
+
+            min-width: 38px;
+
             text-align: center;
+
+            padding: 7px;
         }
+
+
+        .nome-equipe {
+            font-weight: 700;
+
+            color: #0d6efd;
+        }
+
+
+        .modelo-carro {
+            font-size: 0.8rem;
+
+            color: #777;
+        }
+
+
+        /* BOTÕES */
+
+        .btn-editar {
+            border-radius: 7px;
+        }
+
+
+        .btn-excluir {
+            border-radius: 7px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            color: #777;
+
+            font-size: 0.85rem;
+
+            text-align: center;
+
+            padding: 30px 10px;
+        }
+
+
+        /* RESPONSIVO */
+
+        @media (max-width: 768px) {
+
+            .hero {
+                min-height: 340px;
+
+                align-items: flex-end;
+
+                background-position: center;
+            }
+
+
+            .hero-content {
+                padding: 28px;
+            }
+
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- Navbar Header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow-sm">
+
     <div class="container">
 
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <a class="navbar-brand d-flex align-items-center gap-2"
+           href="/">
+
             <i class="bi bi-flag-fill text-danger"></i>
-            <span class="fw-bold">F1 Grid Manager</span>
+
+            <span class="fw-bold">
+                Racing Grid Manager
+            </span>
+
         </a>
 
-        <span class="navbar-text text-light small d-none d-sm-inline">
-            API REST Client (SENAI)
-        </span>
-
     </div>
+
 </nav>
+
+
 
 <div class="container pb-5">
 
-    <!-- Área de Alertas Globais -->
+
+    <!-- BANNER -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <i class="bi bi-flag-fill me-1"></i>
+
+                MOTORSPORT
+
+            </div>
+
+
+            <h1>
+
+                Gerencie seu
+
+                <span>Grid</span>
+
+                de Corrida
+
+            </h1>
+
+
+            <p>
+
+                Cadastre carros, equipes, pilotos e temporadas
+                em uma interface inspirada no automobilismo.
+
+            </p>
+
+
+            <div class="hero-info">
+
+                <span>
+
+                    <i class="bi bi-speedometer me-1"></i>
+
+                    Performance
+
+                </span>
+
+
+                <span>
+
+                    <i class="bi bi-car-front-fill me-1"></i>
+
+                    Carros de Corrida
+
+                </span>
+
+
+                <span>
+
+                    <i class="bi bi-trophy-fill me-1"></i>
+
+                    Competição
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ALERTAS -->
+
     <div id="alertContainer"></div>
+
+
 
     <div class="row g-4">
 
-        <!-- Formulário (Cadastro e Edição) -->
+
+        <!-- FORMULÁRIO -->
+
         <div class="col-lg-4">
 
             <div class="card card-custom p-4">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex
+                            justify-content-between
+                            align-items-center
+                            mb-3">
 
-                    <h5 class="card-title mb-0" id="formTitle">
-                        <i class="bi bi-plus-circle text-primary me-2"></i>
+                    <h5 class="card-title mb-0"
+                        id="formTitle">
+
+                        <i class="bi
+                                  bi-plus-circle
+                                  text-primary
+                                  me-2"></i>
+
                         Novo Carro
+
                     </h5>
+
 
                     <button
                             type="button"
@@ -79,41 +441,81 @@
                             id="btnCancelEdit"
                             aria-label="Cancelar edição"
                             onclick="resetForm()">
+
                     </button>
 
                 </div>
 
-                <form id="carroForm" onsubmit="salvarCarro(event)">
 
-                    <!-- Campo Oculto para ID na Edição -->
-                    <input type="hidden" id="carroId">
+
+                <form
+                        id="carroForm"
+                        onsubmit="salvarCarro(event)">
+
+
+                    <input
+                            type="hidden"
+                            id="carroId">
+
+
 
                     <div class="mb-3">
-                        <label for="equipe" class="form-label">Equipe *</label>
+
+                        <label
+                                for="equipe"
+                                class="form-label">
+
+                            Equipe *
+
+                        </label>
+
+
                         <input
                                 type="text"
                                 class="form-control"
                                 id="equipe"
                                 required
-                                placeholder="Ex: Red Bull Racing">
+                                placeholder="Ex: Racing Team">
+
                     </div>
 
+
+
                     <div class="mb-3">
-                        <label for="modelo" class="form-label">Modelo *</label>
+
+                        <label
+                                for="modelo"
+                                class="form-label">
+
+                            Modelo *
+
+                        </label>
+
+
                         <input
                                 type="text"
                                 class="form-control"
                                 id="modelo"
                                 required
-                                placeholder="Ex: RB19">
+                                placeholder="Ex: RB20">
+
                     </div>
+
+
 
                     <div class="row">
 
+
                         <div class="col-md-6 mb-3">
-                            <label for="numeroPiloto" class="form-label">
+
+                            <label
+                                    for="numeroPiloto"
+                                    class="form-label">
+
                                 Nº Piloto *
+
                             </label>
+
 
                             <input
                                     type="number"
@@ -123,12 +525,21 @@
                                     min="1"
                                     max="99"
                                     placeholder="1">
+
                         </div>
 
+
+
                         <div class="col-md-6 mb-3">
-                            <label for="anoTemporada" class="form-label">
+
+                            <label
+                                    for="anoTemporada"
+                                    class="form-label">
+
                                 Ano *
+
                             </label>
+
 
                             <input
                                     type="number"
@@ -136,39 +547,56 @@
                                     id="anoTemporada"
                                     required
                                     min="1950"
-                                    placeholder="2023">
+                                    placeholder="2026">
+
                         </div>
 
                     </div>
 
+
+
                     <div class="mb-3">
 
-                        <label for="pilotoPrincipal" class="form-label">
+                        <label
+                                for="pilotoPrincipal"
+                                class="form-label">
+
                             Piloto Principal *
+
                         </label>
+
 
                         <input
                                 type="text"
                                 class="form-control"
                                 id="pilotoPrincipal"
                                 required
-                                placeholder="Ex: Max Verstappen">
+                                placeholder="Nome do piloto">
 
                     </div>
 
+
+
                     <div class="mb-3">
 
-                        <label for="motorizacao" class="form-label">
+                        <label
+                                for="motorizacao"
+                                class="form-label">
+
                             Motorização
+
                         </label>
+
 
                         <input
                                 type="text"
                                 class="form-control"
                                 id="motorizacao"
-                                placeholder="Ex: Honda RBPT (Opcional)">
+                                placeholder="Ex: Honda RBPT">
 
                     </div>
+
+
 
                     <div class="d-grid gap-2">
 
@@ -178,13 +606,18 @@
                                 id="btnSubmit">
 
                             <i class="bi bi-check-lg me-1"></i>
+
                             Salvar
 
                         </button>
 
+
+
                         <button
                                 type="button"
-                                class="btn btn-outline-secondary d-none"
+                                class="btn
+                                       btn-outline-secondary
+                                       d-none"
                                 id="btnReset"
                                 onclick="resetForm()">
 
@@ -194,70 +627,152 @@
 
                     </div>
 
+
                 </form>
 
             </div>
 
         </div>
 
-        <!-- Tabela de Listagem -->
+
+
+        <!-- TABELA -->
+
         <div class="col-lg-8">
 
             <div class="card card-custom p-4">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex
+                            justify-content-between
+                            align-items-center
+                            mb-3">
 
-                    <h5 class="card-title mb-0">
-                        <i class="bi bi-list-ul me-2"></i>
-                        Carros Cadastrados
-                    </h5>
+                    <div>
+
+                        <h5 class="card-title mb-0">
+
+                            <i class="bi
+                                      bi-flag-fill
+                                      text-danger
+                                      me-2"></i>
+
+                            Carros Cadastrados
+
+                        </h5>
+
+
+                        <small class="text-muted">
+
+                            Grid de corrida
+
+                        </small>
+
+                    </div>
+
+
 
                     <button
-                            class="btn btn-sm btn-outline-primary"
+                            class="btn
+                                   btn-sm
+                                   btn-outline-primary"
                             onclick="carregarCarros()"
                             title="Atualizar lista">
 
                         <i class="bi bi-arrow-clockwise"></i>
+
                         Recarregar
 
                     </button>
 
                 </div>
 
+
+
                 <div class="table-responsive">
 
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table
+                                  table-hover
+                                  align-middle
+                                  mb-0">
+
 
                         <thead class="table-light">
 
                         <tr>
-                            <th scope="col" class="text-center">Nº</th>
-                            <th scope="col">Equipe & Modelo</th>
-                            <th scope="col">Piloto</th>
-                            <th scope="col">Motor / Ano</th>
-                            <th scope="col" class="text-end">Ações</th>
+
+                            <th
+                                    scope="col"
+                                    class="text-center">
+
+                                Nº
+
+                            </th>
+
+
+                            <th scope="col">
+
+                                Equipe & Modelo
+
+                            </th>
+
+
+                            <th scope="col">
+
+                                Piloto
+
+                            </th>
+
+
+                            <th scope="col">
+
+                                Motor / Ano
+
+                            </th>
+
+
+                            <th
+                                    scope="col"
+                                    class="text-end">
+
+                                Ações
+
+                            </th>
+
                         </tr>
 
                         </thead>
 
+
+
                         <tbody id="tabelaCarros">
-                        <!-- Preenchido dinamicamente via JS -->
+
                         </tbody>
 
                     </table>
 
                 </div>
 
-                <!-- Estado Vazio / Loading -->
-                <div id="tableStatus" class="text-center py-4 text-muted">
+
+
+                <div
+                        id="tableStatus"
+                        class="text-center
+                               py-4
+                               text-muted">
 
                     <div
-                            class="spinner-border spinner-border-sm text-primary"
+                            class="spinner-border
+                                   spinner-border-sm
+                                   text-primary"
                             role="status">
+
                     </div>
 
+
                     <span class="ms-2">
+
                         Carregando grid...
+
                     </span>
 
                 </div>
@@ -270,12 +785,16 @@
 
 </div>
 
-<!-- Modal de Confirmação de Exclusão -->
+
+
+<!-- MODAL DE EXCLUSÃO -->
+
 <div
         class="modal fade"
         id="deleteModal"
         tabindex="-1"
         aria-hidden="true">
+
 
     <div class="modal-dialog modal-dialog-centered">
 
@@ -284,22 +803,36 @@
             <div class="modal-header">
 
                 <h5 class="modal-title text-danger">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                    <i class="bi
+                              bi-exclamation-triangle-fill
+                              me-2"></i>
+
                     Confirmar Exclusão
+
                 </h5>
+
 
                 <button
                         type="button"
                         class="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Fechar">
+
                 </button>
 
             </div>
 
+
+
             <div class="modal-body">
-                Tem certeza que deseja excluir este carro do sistema?
+
+                Tem certeza que deseja excluir
+                este carro do sistema?
+
             </div>
+
+
 
             <div class="modal-footer">
 
@@ -311,6 +844,8 @@
                     Cancelar
 
                 </button>
+
+
 
                 <button
                         type="button"
@@ -329,211 +864,341 @@
 
 </div>
 
-<!-- Bootstrap 5 JS Bundle -->
+
+
+<footer>
+
+    <i class="bi bi-flag-fill text-danger me-1"></i>
+
+    Racing Grid Manager • Projeto SENAI
+
+</footer>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Scripts da SPA -->
+
+
 <script>
 
-    // Configuração da URL Base da sua API REST Spring Boot
-    const API_BASE_URL = 'http://localhost:8080/carros';
+    const API_BASE_URL = '/carros';
 
-    // Cache local de carros e referência da Modal
     let listaCarrosCache = [];
+
     let idParaExcluir = null;
+
     let modalInstance = null;
 
 
-    // Inicialização ao carregar o DOM
-    document.addEventListener('DOMContentLoaded', () => {
 
-        modalInstance = new bootstrap.Modal(
-            document.getElementById('deleteModal')
-        );
+    document.addEventListener(
+        'DOMContentLoaded',
+        () => {
 
-        carregarCarros();
+            modalInstance =
+                new bootstrap.Modal(
+                    document.getElementById(
+                        'deleteModal'
+                    )
+                );
 
-    });
+            carregarCarros();
+
+        }
+    );
 
 
-    // 1. READ - Carregar lista do Backend (GET /carros)
+
+    /* GET */
+
     async function carregarCarros() {
 
-        mostrarLoading(true);
+        mostrarLoading();
+
 
         try {
 
-            const response = await fetch(API_BASE_URL);
+            const response =
+                await fetch(
+                    API_BASE_URL
+                );
+
 
             if (!response.ok) {
-                throw new Error('Falha ao conectar com o servidor.');
+
+                throw new Error(
+                    'Falha ao conectar com o servidor.'
+                );
+
             }
 
-            listaCarrosCache = await response.json();
 
-            renderizarTabela(listaCarrosCache);
+            listaCarrosCache =
+                await response.json();
+
+
+            renderizarTabela(
+                listaCarrosCache
+            );
+
 
         } catch (error) {
 
             mostrarAlerta(
-                'Erro ao carregar dados: ' + error.message,
+
+                'Erro ao carregar dados: '
+                + error.message,
+
                 'danger'
+
             );
 
+
             renderizarTabela([]);
-
-        } finally {
-
-            mostrarLoading(false);
 
         }
 
     }
 
 
-    // Renderiza as linhas da tabela
+
+    /* TABELA */
+
     function renderizarTabela(carros) {
 
         const tbody =
-            document.getElementById('tabelaCarros');
+            document.getElementById(
+                'tabelaCarros'
+            );
+
 
         const statusDiv =
-            document.getElementById('tableStatus');
+            document.getElementById(
+                'tableStatus'
+            );
+
 
         tbody.innerHTML = '';
+
 
 
         if (carros.length === 0) {
 
             statusDiv.innerHTML =
-                '<i class="bi bi-inbox text-muted fs-4 d-block mb-1"></i>Nenhum carro cadastrado.';
 
-            statusDiv.classList.remove('d-none');
+                '<i class="bi bi-inbox text-muted fs-4 d-block mb-1"></i>'
+                +
+                'Nenhum carro cadastrado.';
+
+
+            statusDiv.classList.remove(
+                'd-none'
+            );
+
 
             return;
 
         }
 
 
-        statusDiv.classList.add('d-none');
+
+        statusDiv.classList.add(
+            'd-none'
+        );
 
 
-        carros.forEach(carro => {
 
-            const tr = document.createElement('tr');
+        carros.forEach(
+            carro => {
 
-            tr.innerHTML = `
+                const tr =
+                    document.createElement(
+                        'tr'
+                    );
 
-                <td class="text-center">
 
-                    <span class="badge bg-dark badge-numero">
-                        ${carro.numeroPiloto}
-                    </span>
+                tr.innerHTML = `
 
-                </td>
+                    <td class="text-center">
 
-                <td>
+                        <span class="badge
+                                     bg-dark
+                                     badge-numero">
 
-                    <strong class="text-primary">
-                        ${carro.equipe}
-                    </strong>
+                            ${carro.numeroPiloto ?? '-'}
 
-                    <div class="small text-muted">
-                        ${carro.modelo}
-                    </div>
+                        </span>
 
-                </td>
+                    </td>
 
-                <td>
 
-                    <i class="bi bi-person me-1"></i>
-                    ${carro.pilotoPrincipal}
+                    <td>
 
-                </td>
+                        <div class="nome-equipe">
 
-                <td>
+                            ${carro.equipe}
 
-                    <span class="badge bg-light text-dark border me-1">
-                        ${carro.anoTemporada}
-                    </span>
+                        </div>
 
-                    <small class="text-muted">
-                        ${carro.motorizacao || '-'}
-                    </small>
 
-                </td>
+                        <div class="modelo-carro">
 
-                <td class="text-end">
+                            ${carro.modelo}
 
-                    <button
-                        class="btn btn-sm btn-outline-warning me-1"
-                        onclick="prepararEdicao(${carro.id})"
-                        title="Editar">
+                        </div>
 
-                        <i class="bi bi-pencil-fill"></i>
+                    </td>
 
-                    </button>
 
-                    <button
-                        class="btn btn-sm btn-outline-danger"
-                        onclick="abrirModalExclusao(${carro.id})"
-                        title="Deletar">
+                    <td>
 
-                        <i class="bi bi-trash-fill"></i>
+                        <i class="bi
+                                  bi-person
+                                  me-1"></i>
 
-                    </button>
+                        ${carro.pilotoPrincipal ?? '-'}
 
-                </td>
+                    </td>
 
-            `;
 
-            tbody.appendChild(tr);
+                    <td>
 
-        });
+                        <span class="badge
+                                     bg-light
+                                     text-dark
+                                     border
+                                     me-1">
+
+                            ${carro.anoTemporada}
+
+                        </span>
+
+
+                        <small class="text-muted">
+
+                            ${carro.motorizacao || '-'}
+
+                        </small>
+
+                    </td>
+
+
+                    <td class="text-end">
+
+                        <button
+                                class="btn
+                                       btn-sm
+                                       btn-outline-warning
+                                       btn-editar
+                                       me-1"
+                                onclick="prepararEdicao(${carro.id})"
+                                title="Editar">
+
+                            <i class="bi
+                                      bi-pencil-fill"></i>
+
+                        </button>
+
+
+                        <button
+                                class="btn
+                                       btn-sm
+                                       btn-outline-danger
+                                       btn-excluir"
+                                onclick="abrirModalExclusao(${carro.id})"
+                                title="Deletar">
+
+                            <i class="bi
+                                      bi-trash-fill"></i>
+
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tbody.appendChild(
+                    tr
+                );
+
+            }
+        );
 
     }
 
 
-    // 2. CREATE / UPDATE - Salvar dados
+
+    /* POST / PUT */
+
     async function salvarCarro(event) {
 
         event.preventDefault();
 
 
+
         const id =
-            document.getElementById('carroId').value;
+            document.getElementById(
+                'carroId'
+            ).value;
+
 
 
         const dto = {
 
-            id: id ? parseInt(id) : null,
+            id:
+                id
+                    ? parseInt(id)
+                    : null,
+
 
             equipe:
-            document.getElementById('equipe').value,
+            document.getElementById(
+                'equipe'
+            ).value,
+
 
             modelo:
-            document.getElementById('modelo').value,
+            document.getElementById(
+                'modelo'
+            ).value,
+
 
             motorizacao:
-                document.getElementById('motorizacao').value || null,
+                document.getElementById(
+                    'motorizacao'
+                ).value || null,
+
 
             anoTemporada:
                 parseInt(
-                    document.getElementById('anoTemporada').value
+                    document.getElementById(
+                        'anoTemporada'
+                    ).value
                 ),
+
 
             numeroPiloto:
                 parseInt(
-                    document.getElementById('numeroPiloto').value
+                    document.getElementById(
+                        'numeroPiloto'
+                    ).value
                 ),
 
+
             pilotoPrincipal:
-            document.getElementById('pilotoPrincipal').value
+            document.getElementById(
+                'pilotoPrincipal'
+            ).value
 
         };
 
 
-        const isEdit = Boolean(id);
+
+        const isEdit =
+            Boolean(id);
+
 
 
         const url =
@@ -542,25 +1207,38 @@
                 : API_BASE_URL;
 
 
+
         const method =
             isEdit
                 ? 'PUT'
                 : 'POST';
 
 
+
         try {
 
-            const response = await fetch(url, {
+            const response =
+                await fetch(
+                    url,
+                    {
 
-                method: method,
+                        method: method,
 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
 
-                body: JSON.stringify(dto)
+                        headers: {
 
-            });
+                            'Content-Type':
+                                'application/json'
+
+                        },
+
+
+                        body:
+                            JSON.stringify(dto)
+
+                    }
+                );
+
 
 
             if (response.ok) {
@@ -585,28 +1263,59 @@
 
             } else {
 
-
                 const errorData =
                     await response
                         .json()
-                        .catch(() => ({}));
+                        .catch(
+                            () => ({})
+                        );
 
 
-                const msg =
-                    errorData.message ||
-                    'Verifique as validações informadas.';
+
+                let mensagem =
+                    errorData.message;
+
+
+
+                if (!mensagem) {
+
+                    const erros =
+                        Object.values(
+                            errorData
+                        );
+
+
+                    if (erros.length > 0) {
+
+                        mensagem =
+                            erros.join(
+                                ' | '
+                            );
+
+                    }
+
+                }
+
 
 
                 mostrarAlerta(
-                    `Erro ao salvar: ${msg}`,
+
+                    'Erro ao salvar: '
+                    +
+                    (
+                        mensagem
+                        ||
+                        'Verifique as validações informadas.'
+                    ),
+
                     'danger'
+
                 );
 
             }
 
 
         } catch (error) {
-
 
             mostrarAlerta(
 
@@ -622,7 +1331,9 @@
     }
 
 
-    // Prepara o formulário para edição (PUT)
+
+    /* EDITAR */
+
     function prepararEdicao(id) {
 
         const carro =
@@ -631,125 +1342,206 @@
             );
 
 
+
         if (!carro) {
+
             return;
+
         }
 
 
-        document.getElementById('carroId').value =
+
+        document.getElementById(
+            'carroId'
+        ).value =
             carro.id;
 
-        document.getElementById('equipe').value =
+
+
+        document.getElementById(
+            'equipe'
+        ).value =
             carro.equipe;
 
-        document.getElementById('modelo').value =
+
+
+        document.getElementById(
+            'modelo'
+        ).value =
             carro.modelo;
 
-        document.getElementById('motorizacao').value =
+
+
+        document.getElementById(
+            'motorizacao'
+        ).value =
             carro.motorizacao || '';
 
-        document.getElementById('anoTemporada').value =
+
+
+        document.getElementById(
+            'anoTemporada'
+        ).value =
             carro.anoTemporada;
 
-        document.getElementById('numeroPiloto').value =
-            carro.numeroPiloto;
-
-        document.getElementById('pilotoPrincipal').value =
-            carro.pilotoPrincipal;
 
 
-        document.getElementById('formTitle').innerHTML =
-            '<i class="bi bi-pencil-square text-warning me-2"></i>Editar Carro';
+        document.getElementById(
+            'numeroPiloto'
+        ).value =
+            carro.numeroPiloto ?? '';
 
 
-        document.getElementById('btnSubmit').className =
+
+        document.getElementById(
+            'pilotoPrincipal'
+        ).value =
+            carro.pilotoPrincipal ?? '';
+
+
+
+        document.getElementById(
+            'formTitle'
+        ).innerHTML =
+
+            '<i class="bi bi-pencil-square text-warning me-2"></i>'
+            +
+            'Editar Carro';
+
+
+
+        document.getElementById(
+            'btnSubmit'
+        ).className =
+
             'btn btn-warning fw-semibold';
 
 
-        document.getElementById('btnSubmit').innerHTML =
-            '<i class="bi bi-arrow-repeat me-1"></i> Atualizar';
+
+        document.getElementById(
+            'btnSubmit'
+        ).innerHTML =
+
+            '<i class="bi bi-arrow-repeat me-1"></i>'
+            +
+            'Atualizar';
 
 
-        document
-            .getElementById('btnReset')
-            .classList
-            .remove('d-none');
+
+        document.getElementById(
+            'btnReset'
+        ).classList.remove(
+            'd-none'
+        );
 
 
-        document
-            .getElementById('btnCancelEdit')
-            .classList
-            .remove('d-none');
+
+        document.getElementById(
+            'btnCancelEdit'
+        ).classList.remove(
+            'd-none'
+        );
 
 
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+
+        window.scrollTo(
+            {
+
+                top: 0,
+
+                behavior: 'smooth'
+
+            }
+        );
 
     }
 
 
-    // Reseta o formulário
+
+    /* RESET */
+
     function resetForm() {
 
-        document
-            .getElementById('carroForm')
-            .reset();
+        document.getElementById(
+            'carroForm'
+        ).reset();
 
 
-        document
-            .getElementById('carroId')
-            .value = '';
+
+        document.getElementById(
+            'carroId'
+        ).value = '';
 
 
-        document
-            .getElementById('formTitle')
-            .innerHTML =
-            '<i class="bi bi-plus-circle text-primary me-2"></i>Novo Carro';
+
+        document.getElementById(
+            'formTitle'
+        ).innerHTML =
+
+            '<i class="bi bi-plus-circle text-primary me-2"></i>'
+            +
+            'Novo Carro';
 
 
-        document
-            .getElementById('btnSubmit')
-            .className =
+
+        document.getElementById(
+            'btnSubmit'
+        ).className =
+
             'btn btn-primary fw-semibold';
 
 
-        document
-            .getElementById('btnSubmit')
-            .innerHTML =
-            '<i class="bi bi-check-lg me-1"></i> Salvar';
+
+        document.getElementById(
+            'btnSubmit'
+        ).innerHTML =
+
+            '<i class="bi bi-check-lg me-1"></i>'
+            +
+            'Salvar';
 
 
-        document
-            .getElementById('btnReset')
-            .classList
-            .add('d-none');
+
+        document.getElementById(
+            'btnReset'
+        ).classList.add(
+            'd-none'
+        );
 
 
-        document
-            .getElementById('btnCancelEdit')
-            .classList
-            .add('d-none');
+
+        document.getElementById(
+            'btnCancelEdit'
+        ).classList.add(
+            'd-none'
+        );
 
     }
 
 
-    // 3. DELETE - Remover carro
+
+    /* DELETE */
+
     function abrirModalExclusao(id) {
 
         idParaExcluir = id;
 
 
-        document
-            .getElementById('btnConfirmDelete')
-            .onclick =
-            () => executarExclusao(id);
+
+        document.getElementById(
+            'btnConfirmDelete'
+        ).onclick =
+            () =>
+                executarExclusao(
+                    id
+                );
+
 
 
         modalInstance.show();
 
     }
+
 
 
     async function executarExclusao(id) {
@@ -758,37 +1550,52 @@
 
             const response =
                 await fetch(
+
                     `${API_BASE_URL}/${id}`,
+
                     {
-                        method: 'DELETE'
+
+                        method:
+                            'DELETE'
+
                     }
+
                 );
+
 
 
             if (
                 response.status === 204
-                || response.ok
+                ||
+                response.ok
             ) {
 
                 mostrarAlerta(
+
                     'Carro removido com sucesso!',
+
                     'warning'
+
                 );
 
+
                 carregarCarros();
+
 
             } else {
 
                 mostrarAlerta(
-                    'Erro ao excluir registro do servidor.',
+
+                    'Erro ao excluir registro.',
+
                     'danger'
+
                 );
 
             }
 
 
         } catch (error) {
-
 
             mostrarAlerta(
 
@@ -802,17 +1609,20 @@
 
         } finally {
 
-
             modalInstance.hide();
 
-            idParaExcluir = null;
+
+            idParaExcluir =
+                null;
 
         }
 
     }
 
 
-    // Utilitários de Interface
+
+    /* ALERTA */
+
     function mostrarAlerta(
         mensagem,
         tipo = 'info'
@@ -824,51 +1634,83 @@
             );
 
 
-        const alert =
-            document.createElement('div');
+
+        const alerta =
+            document.createElement(
+                'div'
+            );
 
 
-        alert.className =
-            `alert alert-${tipo} alert-dismissible fade show shadow-sm`;
+
+        alerta.className =
+
+            `alert
+             alert-${tipo}
+             alert-dismissible
+             fade
+             show
+             shadow-sm`;
 
 
-        alert.role = 'alert';
+
+        alerta.role =
+            'alert';
 
 
-        alert.innerHTML = `
+
+        alerta.innerHTML = `
 
             ${mensagem}
 
             <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Fechar">
             </button>
 
         `;
 
 
-        container.appendChild(alert);
+
+        container.appendChild(
+            alerta
+        );
 
 
-        setTimeout(() => {
 
-            if (alert) {
+        setTimeout(
+            () => {
 
-                const bsAlert =
-                    new bootstrap.Alert(alert);
+                if (
+                    alerta
+                    &&
+                    alerta.parentNode
+                ) {
 
-                bsAlert.close();
+                    const bsAlert =
+                        new bootstrap.Alert(
+                            alerta
+                        );
 
-            }
 
-        }, 4000);
+                    bsAlert.close();
+
+                }
+
+            },
+
+            4000
+
+        );
 
     }
 
 
-    function mostrarLoading(show) {
+
+    /* LOADING */
+
+    function mostrarLoading() {
 
         const statusDiv =
             document.getElementById(
@@ -876,20 +1718,25 @@
             );
 
 
-        if (show) {
 
-            statusDiv.innerHTML =
-                '<div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-2">Carregando grid...</span>';
+        statusDiv.innerHTML =
 
-            statusDiv.classList.remove(
-                'd-none'
-            );
+            '<div class="spinner-border spinner-border-sm text-primary" role="status"></div>'
+            +
+            '<span class="ms-2">Carregando grid...</span>';
 
-        }
+
+
+        statusDiv.classList.remove(
+            'd-none'
+        );
 
     }
 
+
 </script>
 
+
 </body>
+
 </html>
